@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.container{
+  width: 90%;
+  height: 20vh;
+}
+
+</style>
+<body>
+  <div class="container" id="container">
+
+  </div>
+    <script>
+
+const x=document.getElementById('container');
+
+// if (geoPosition.init()) {
+//   geoPosition.getCurrentPosition(geoSuccess, geoError);
+  
+// }
+
+// function geoSuccess(p) {
+//   alert("Found you at latitude " + p.coords.latitude +
+//         ", longitude " + p.coords.longitude);
+// }
+
+// function geoError() {
+//   alert("Could not find you!");
+// }
+
+
+// ..............................................................................................///////
+// function get_location() {
+//   x.innerHTML=navigator.geolocation.getCurrentPosition(show_map);
+  
+// }
+
+// function show_map(position) {
+//   var latitude = position.coords.latitude;
+//   var longitude = position.coords.longitude;
+//   // let's show a map or do something interesting!
+// }
+// console.log(get_location());
+
+
+function  lookup_location(){
+  geoPosition.getCurrentPosition(show_map, show_map_error);
+}
+
+        
+        function show_map(loc) {
+  $("#geo-wrapper").css({'width':'320px','height':'350px'});
+  var map = new GMap2(document.getElementById("geo-wrapper"));
+  var center = new GLatLng(loc.coords.latitude, loc.coords.longitude);
+  map.setCenter(center, 14);
+  map.addControl(new GSmallMapControl());
+  map.addControl(new GMapTypeControl());
+  map.addOverlay(new GMarker(center, {draggable: false, title: "You are here (more or less)"}));
+}
+function show_map_error() {
+  $("#live-geolocation").html('Unable to determine your location.');
+}
+function show_map_error() {
+  $("#live-geolocation").html('Unable to determine your location.');
+}
+
+
+console.log(lookup_location());
+
+        </script>
+</body>
+<script src="javascript-mobile-desktop-geolocation-master/js/geoPosition.js"></script>
+<script src="javascript-mobile-desktop-geolocation-master/js/geoPositionSimulator.js"></script>
+</html>
